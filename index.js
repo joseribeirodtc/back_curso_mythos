@@ -31,8 +31,8 @@ app.post("/createCurso", (req, res) => {
 app.post("/searchCurso", (req, res) => {
   const { name } = req.body;
 
-  let mysql = "SELECT * from games WHERE name LIKE '%?%'";
-  db.query(mysql, [name], (err, result) => {
+  let mysql = `SELECT * from cursos WHERE name LIKE '%${name}%'`;
+  db.query(mysql, (err, result) => {
     if (err) res.send(err);
     res.send(result);
   });
@@ -93,8 +93,8 @@ app.post("/createAluno", (req, res) => {
 app.post("/searchAluno", (req, res) => {
   const { name } = req.body;
 
-  let mysql = "SELECT * from alunos WHERE name LIKE '%?%'";
-  db.query(mysql, [name], (err, result) => {
+  let mysql = `SELECT * from alunos WHERE name LIKE '%${name}%'`;
+  db.query(mysql, (err, result) => {
     if (err) res.send(err);
     res.send(result);
   });
@@ -138,7 +138,7 @@ app.delete("/deleteAluno/:id", (req, res) => {
 
 //MATRICULAS ROTAS
 
-app.get("/getCursosMatriculados", (req, res) => {
+app.post("/getCursosMatriculados", (req, res) => {
   const { id } = req.body;
   let mysql = "SELECT * FROM matriculas WHERE id_aluno = ?";
   db.query(mysql, [id], (err, result) => {
@@ -150,7 +150,7 @@ app.get("/getCursosMatriculados", (req, res) => {
   });
 });
 
-app.get("/getAlunosMatriculados", (req, res) => {
+app.post("/getAlunosMatriculados", (req, res) => {
   const { id } = req.body;
   let mysql = "SELECT * FROM matriculas WHERE id_curso = ?";
   db.query(mysql, [id], (err, result) => {
