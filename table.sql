@@ -1,11 +1,3 @@
-CREATE TABLE crudgames.games (
-    idgames int NOT NULL AUTO_INCREMENT,
-    name varchar(45) NOT NULL,
-    cost varchar(45) NOT NULL,
-    category varchar(45) NOT NULL,
-PRIMARY KEY (idgames));
-
-
 CREATE TABLE curso_mythos.cursos (
     id int NOT NULL AUTO_INCREMENT,
     name varchar(45) NOT NULL,
